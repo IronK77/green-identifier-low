@@ -7,7 +7,7 @@ Created on Sun Mar 13 22:52:13 2022
 
 import streamlit as st
 import pandas as pd
-#import plotly.graph_objects as go
+import plotly.graph_objects as go
 from PIL import Image
 
 st.set_page_config(
@@ -80,20 +80,20 @@ data_selected=reports[["ID","report_name","type","GL_name"]][reports["GL_code"]=
 title=("债券代码","报告标题","报告类型","参考准则")
 
 if len(data_selected)>0:
-    st.dataframe(data_selected)
-#    fig = go.Figure(data=[go.Table(
-#        columnorder=[1,2,3,4],
-#        columnwidth=[150,900,200,350],
-#        header=dict(values=title,
-#                fill_color='rgba(79,162,134,0.3)',
-#                align='left'),
-#        cells=dict(values=[data_selected.ID, data_selected.report_name, data_selected.type,data_selected.GL_name],
-#               fill_color='rgba(217,160,72,0.6)',
-#               align='left'))
-#]   )
-#    fig.update_layout(
-#        margin=dict(l=0, r=20, t=20, b=20)
-#    )   
-#    st.write(fig)
+#    st.dataframe(data_selected)
+    fig = go.Figure(data=[go.Table(
+        columnorder=[1,2,3,4],
+        columnwidth=[150,900,200,350],
+        header=dict(values=title,
+                fill_color='rgba(79,162,134,0.3)',
+                align='left'),
+        cells=dict(values=[data_selected.ID, data_selected.report_name, data_selected.type,data_selected.GL_name],
+               fill_color='rgba(217,160,72,0.6)',
+               align='left'))
+]   )
+    fig.update_layout(
+       margin=dict(l=0, r=20, t=20, b=20)
+   )   
+    st.write(fig)
 else:
     st.info("报告库内当前无合适报告")
